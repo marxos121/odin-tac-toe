@@ -62,18 +62,27 @@ const gameBoard = (function () {
     _filled = 0;
   }
 
-  function print() {
-    _board.forEach((cell) => console.log(cell));
-  }
-
   _board.fill(" ");
-  return { move, check, clear, print };
+  return { move, check, clear };
 })();
 
 const game = (function () {
   let _currentPlayer = "O";
   let _acceptInput = true;
   let _res = "nc";
+  const cells = document.querySelectorAll(".cell");
+
+  function _init() {
+    let it = 0;
+    cells.forEach((cell) => {
+      const index = it++;
+      cell.addEventListener("click", () => {
+        play(index);
+      });
+    });
+
+    document.querySelector("#new-game").addEventListener("click", startNew);
+  }
 
   function play(cell) {
     if (!_acceptInput || !gameBoard.move(cell, _currentPlayer)) {
@@ -93,21 +102,20 @@ const game = (function () {
     button.textContent = _currentPlayer;
   }
 
+  function _clearDisplay() {
+    cells.forEach((cell) => {
+      cell.textContent = "";
+    });
+  }
+
   function startNew() {
     _currentPlayer = "O";
     _acceptInput = true;
     _res = "nc";
+    _clearDisplay();
     gameBoard.clear();
   }
 
+  _init();
   return { play, startNew };
 })();
-
-const cells = document.querySelectorAll(".cell");
-let it = 0;
-cells.forEach((cell) => {
-  const index = it++;
-  cell.addEventListener("click", () => {
-    game.play(index);
-  });
-});
