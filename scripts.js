@@ -41,7 +41,7 @@ const gameBoard = (function () {
     }
 
     if (_filled === 9) {
-      return "draw";
+      return "tie";
     }
 
     return "nc";
@@ -71,6 +71,7 @@ const game = (function () {
   let _acceptInput = true;
   let _res = "nc";
   const cells = document.querySelectorAll(".cell");
+  const resultDisplay = document.querySelector(".result");
 
   function _init() {
     let it = 0;
@@ -93,6 +94,18 @@ const game = (function () {
     _updateDisplay(cell);
     if (_res != "nc") {
       _acceptInput = false;
+
+      switch (_res) {
+        case "tie":
+          resultDisplay.textContent = "It's a tie!";
+          break;
+        case "X":
+          resultDisplay.textContent = "X wins!";
+          break;
+        case "O":
+          resultDisplay.textContent = "O wins!";
+          break;
+      }
     }
     _currentPlayer = _currentPlayer === "O" ? "X" : "O";
   }
@@ -106,6 +119,7 @@ const game = (function () {
     cells.forEach((cell) => {
       cell.textContent = "";
     });
+    resultDisplay.textContent = "";
   }
 
   function startNew() {
