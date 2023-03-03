@@ -24,12 +24,12 @@ const gameBoard = (function () {
 
       if (resLeftDiag === 3 || resRightDiag === 3) {
         _acceptInput = false;
-        res = "X";
+        _res = "X";
         return res;
       } else if (resLeftDiag === -3 || resRightDiag === -3) {
         _acceptInput = false;
-        res = "O";
-        return res;
+        _res = "O";
+        return _res;
       }
 
       //Check rows and columns
@@ -83,6 +83,26 @@ const gameBoard = (function () {
     _acceptInput = true;
   }
 
-  _board.fille(" ");
+  _board.fill(" ");
   return { move, check, clear };
+})();
+
+const game = (function () {
+  let _currentPlayer = "O";
+
+  function play() {
+    gameBoard.move(_currentPlayer);
+    _res = gameBoard.check();
+    _displayResult();
+    _currentPlayer = _currentPlayer === "O" ? "X" : "O";
+  }
+
+  function _displayResult() {}
+
+  function startNew() {
+    let _currentPlayer = "O";
+    gameBoard.clear();
+  }
+
+  return { play, startNew };
 })();
