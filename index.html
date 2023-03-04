@@ -12,26 +12,29 @@
       href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
       rel="stylesheet"
     />
+    
     <title>Odin-Tac-Toe</title>
   </head>
   <body>
-    <div class="board">
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-      <button type="button" class="cell"></button>
-    </div>
     <span id="settings"><object data="assets/cogwheel.svg"></object></span>
-    <div class="interface">
-      <button id="new-game">New Game</button>
-      <h2 class="result"></h2>
+    <div class="content">
+      <div class="board">
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+        <button type="button" class="cell"></button>
+      </div>
+      <div class="interface">
+        <button id="new-game">New Game</button>
+        <h2 class="result"></h2>
+      </div>
     </div>
-    <div id="settings-screen">
+    <div id="settings-screen" class="invisible">
       <div class="player-card">
         <h3>Player 1 (O)</h3>
         <form class="player-form">
@@ -61,22 +64,26 @@
           </fieldset>-->
           <fieldset>
             <legend>Player type</legend>
-            <label for="type-human-1">Human</label>
-            <input
-              type="radio"
-              name="player-type"
-              id="type-human-1"
-              value="human"
-              required
-            />
-            <label for="type-ai-1">AI</label>
-            <input
-              type="radio"
-              name="player-type"
-              id="type-ai-1"
-              value="ai"
-              required
-            />
+            <span>
+              <input
+                type="radio"
+                name="player-type"
+                id="type-human-1"
+                value="human"
+                required
+              />
+              <label for="type-human-1">Human</label>
+            </span>
+              <span>
+              <input
+                type="radio"
+                name="player-type"
+                id="type-ai-1"
+                value="ai"
+                required
+              />
+              <label for="type-ai-1">AI</label>
+            </span>
           </fieldset>
           <button type="submit">Confirm</button>
         </form>
@@ -110,7 +117,7 @@
           </fieldset>
           <fieldset>
             <legend>Player type</legend>
-            <label for="type-human-2">Human</label>
+            <span>
             <input
               type="radio"
               name="player-type"
@@ -118,14 +125,17 @@
               value="human"
               required
             />
-            <label for="type-ai-2">AI</label>
-            <input
-              type="radio"
-              name="player-type"
-              id="type-ai-2"
-              value="ai"
-              required
-            />
+            <label for="type-human-2">Human</label>
+          </span>
+            <span>
+              <input
+                type="radio"
+                name="player-type"
+                id="type-ai-2"
+                value="ai"
+                required
+              />
+            <label for="type-ai-2">AI</label></span>
           </fieldset>
           <button type="submit">Confirm</button>
         </form>

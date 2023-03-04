@@ -8,6 +8,13 @@
   margin: 0;
 }
 
+.content {
+  display: flex;
+  padding-top: 30vh;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, max-content);
@@ -106,6 +113,7 @@ label:first-child {
 }
 
 #settings {
+  background-color: inherit;
   cursor: pointer;
   z-index: 2;
   position: fixed;
@@ -118,4 +126,14 @@ label:first-child {
   z-index: 2;
 
   pointer-events: none;
+}
+
+fieldset {
+  display: flex;
+  justify-content: space-between;
+}
+
+fieldset > span {
+  display: flex;
+  gap: 0.5em;
 }
