@@ -16,13 +16,13 @@
 .cell {
   height: 10vh;
   width: 10vh;
-  font-size: 9vh;
+  font-size: 7vh;
+  font-style: italic;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0;
-  padding: 0;
-  box-sizing: content-box;
+  padding-right: 0.35em;
   background-color: inherit;
 }
 
@@ -51,4 +51,17 @@
 .cell:nth-child(8) {
   border-left: solid var(--cell-border-width) var(--cell-border-color);
   border-right: solid var(--cell-border-width) var(--cell-border-color);
+}
+
+.interface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#new-game {
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  background-color: inherit;
 }
