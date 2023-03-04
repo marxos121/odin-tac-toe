@@ -67,7 +67,7 @@ const gameBoard = (function () {
 })();
 
 const game = (function () {
-  let _players = [_player("", "O"), _player("", "X")];
+  let players = [_player("", "O"), _player("", "X")];
   let _currentPlayer = 0;
   let _acceptInput = true;
   let _res = "nc";
@@ -91,7 +91,7 @@ const game = (function () {
   }
 
   function play(cell) {
-    if (!_acceptInput || !gameBoard.move(cell, _players[_currentPlayer].sign)) {
+    if (!_acceptInput || !gameBoard.move(cell, players[_currentPlayer].sign)) {
       return;
     }
 
@@ -100,24 +100,23 @@ const game = (function () {
     if (_res != "nc") {
       _acceptInput = false;
 
-      switch (_res) {
-        case "tie":
-          resultDisplay.textContent = "It's a tie!";
-          break;
-        case "X":
-          resultDisplay.textContent = "X wins!";
-          break;
-        case "O":
-          resultDisplay.textContent = "O wins!";
-          break;
+      if (_res === "tie") {
+        resultDisplay.textContent = "It's a tie!";
+      } else {
+        let temp =
+          players[_currentPlayer].name === ""
+            ? players[_currentPlayer].sign
+            : players[_currentPlayer].name;
+        resultDisplay.textContent = `${temp} wins!`;
       }
     }
+
     _currentPlayer = _currentPlayer === 0 ? 1 : 0;
   }
 
   function _updateDisplay(cell) {
     const button = document.querySelector(`.board :nth-child(${cell + 1}`);
-    button.textContent = _players[_currentPlayer].sign;
+    button.textContent = players[_currentPlayer].sign;
   }
 
   function _clearDisplay() {
@@ -136,7 +135,7 @@ const game = (function () {
   }
 
   _init();
-  return { play, startNew };
+  return { players, play, startNew };
 })();
 
 document.querySelector("#settings").addEventListener("click", () => {
@@ -149,5 +148,9 @@ document.querySelector("#settings").addEventListener("click", () => {
 });
 
 document.querySelectorAll("form").forEach((form) => {
-  form.addEventListener("submit", (event) => event.preventDefault());
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    game.players[+form.getAttribute("data-player")].name =
+      form.querySelector(`input[name="name"]`).value;
+  });
 });
