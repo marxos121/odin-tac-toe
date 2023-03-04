@@ -67,11 +67,16 @@ const gameBoard = (function () {
 })();
 
 const game = (function () {
-  let _currentPlayer = "O";
+  let _players = [_player("", "O"), _player("", "X")];
+  let _currentPlayer = 0;
   let _acceptInput = true;
   let _res = "nc";
   const cells = document.querySelectorAll(".cell");
   const resultDisplay = document.querySelector(".result");
+
+  function _player(name, sign) {
+    return { name, sign };
+  }
 
   function _init() {
     let it = 0;
@@ -86,7 +91,7 @@ const game = (function () {
   }
 
   function play(cell) {
-    if (!_acceptInput || !gameBoard.move(cell, _currentPlayer)) {
+    if (!_acceptInput || !gameBoard.move(cell, _players[_currentPlayer].sign)) {
       return;
     }
 
@@ -107,12 +112,12 @@ const game = (function () {
           break;
       }
     }
-    _currentPlayer = _currentPlayer === "O" ? "X" : "O";
+    _currentPlayer = _currentPlayer === 0 ? 1 : 0;
   }
 
   function _updateDisplay(cell) {
     const button = document.querySelector(`.board :nth-child(${cell + 1}`);
-    button.textContent = _currentPlayer;
+    button.textContent = _players[_currentPlayer].sign;
   }
 
   function _clearDisplay() {
@@ -123,7 +128,7 @@ const game = (function () {
   }
 
   function startNew() {
-    _currentPlayer = "O";
+    _currentPlayer = 0;
     _acceptInput = true;
     _res = "nc";
     _clearDisplay();
@@ -141,4 +146,8 @@ document.querySelector("#settings").addEventListener("click", () => {
   } else {
     settingsScreen.classList.add("invisible");
   }
+});
+
+document.querySelectorAll("form").forEach((form) => {
+  form.addEventListener("submit", (event) => event.preventDefault());
 });
