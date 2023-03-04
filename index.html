@@ -26,18 +26,20 @@
       <button type="button" class="cell"></button>
       <button type="button" class="cell"></button>
     </div>
+    <object id="settings" data="assets/cogwheel.svg"></object>
     <div class="interface">
       <button id="new-game">New Game</button>
       <h2 class="result"></h2>
     </div>
     <div class="settings-screen">
       <div class="player-card">
-        <h3>Player 1</h3>
+        <h3>Player 1 (O)</h3>
         <form class="player-form">
           <div>
             <label for="name-1">Name</label>
             <input type="text" name="name" id="name-1" required />
           </div>
+          <!--
           <fieldset>
             <legend>Sign</legend>
             <label for="sign-x-1">X</label>
@@ -56,7 +58,7 @@
               value="o"
               required
             />
-          </fieldset>
+          </fieldset>-->
           <fieldset>
             <legend>Player type</legend>
             <label for="type-human-1">Human</label>
@@ -80,12 +82,13 @@
         </form>
       </div>
       <div class="player-card">
-        <h3>Player 2</h3>
+        <h3>Player 2 (X)</h3>
         <form class="player-form">
           <div>
             <label for="name-2">Name</label>
             <input type="text" name="name" id="name-2" required />
           </div>
+          <!--
           <fieldset>
             <legend>Sign</legend>
             <label for="sign-x-2">X</label>
@@ -103,7 +106,7 @@
               id="sign-o-2"
               value="o"
               required
-            />
+            />-->
           </fieldset>
           <fieldset>
             <legend>Player type</legend>
