@@ -133,3 +133,12 @@ const game = (function () {
   _init();
   return { play, startNew };
 })();
+
+document.querySelector("#settings").addEventListener("click", () => {
+  const settingsScreen = document.querySelector("#settings-screen");
+  if (settingsScreen.classList.contains("invisible")) {
+    settingsScreen.classList.remove("invisible");
+  } else {
+    settingsScreen.classList.add("invisible");
+  }
+});
