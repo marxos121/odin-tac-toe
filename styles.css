@@ -1,0 +1,54 @@
+:root {
+  --cell-border-width: 3px;
+  --cell-border-color: darkgrey;
+}
+
+* {
+  font-family: "Pacifico", cursive;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  justify-content: center;
+}
+
+.cell {
+  height: 10vh;
+  width: 10vh;
+  font-size: 9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  box-sizing: content-box;
+  background-color: inherit;
+}
+
+.cell:nth-child(2) {
+  border-left: solid var(--cell-border-width) var(--cell-border-color);
+  border-right: solid var(--cell-border-width) var(--cell-border-color);
+}
+
+.cell:nth-child(4) {
+  border-top: solid var(--cell-border-width) var(--cell-border-color);
+  border-bottom: solid var(--cell-border-width) var(--cell-border-color);
+}
+
+.cell:nth-child(5) {
+  border-top: solid var(--cell-border-width) var(--cell-border-color);
+  border-right: solid var(--cell-border-width) var(--cell-border-color);
+  border-bottom: solid var(--cell-border-width) var(--cell-border-color);
+  border-left: solid var(--cell-border-width) var(--cell-border-color);
+}
+
+.cell:nth-child(6) {
+  border-top: solid var(--cell-border-width) var(--cell-border-color);
+  border-bottom: solid var(--cell-border-width) var(--cell-border-color);
+}
+
+.cell:nth-child(8) {
+  border-left: solid var(--cell-border-width) var(--cell-border-color);
+  border-right: solid var(--cell-border-width) var(--cell-border-color);
+}
